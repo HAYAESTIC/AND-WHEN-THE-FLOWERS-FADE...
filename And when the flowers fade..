@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Still, Home — A Poem</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: #050706;
+    color: #c9c9bd;
+    font-family: "Cormorant Garamond", serif;
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   DARK CINEMATIC BACKGROUND
+===================================================== */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 25%,
+            rgba(44, 54, 45, 0.35),
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 15% 85%,
+            rgba(24, 34, 27, 0.25),
+            transparent 45%
+        ),
+        #050706;
+}
+
+
+/* distant moon */
+
+.moon {
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    border-radius: 50%;
+
+    right: 8%;
+    top: 9%;
+
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            #bfc2b2,
+            #858a7c 55%,
+            #53594f
+        );
+
+    opacity: 0.09;
+
+    filter: blur(1px);
+
+    box-shadow:
+        0 0 80px rgba(190, 195, 175, 0.08);
+}
+
+
+/* distant horizon */
+
+.horizon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 35%;
+
+    background:
+        linear-gradient(
+            to top,
+            #020302,
+            transparent
+        );
+}
+
+
+/* =====================================================
+   TREE SILHOUETTES
+===================================================== */
+
+.tree {
+    position: absolute;
+    bottom: -20px;
+
+    width: 180px;
+    height: 500px;
+
+    opacity: 0.18;
+}
+
+.tree.left {
+    left: -50px;
+    transform: rotate(-4deg);
+}
+
+.tree.right {
+    right: -50px;
+    transform: rotate(5deg);
+}
+
+.trunk {
+    position: absolute;
+
+    bottom: 0;
+    left: 50%;
+
+    width: 12px;
+    height: 80%;
+
+    background: #101512;
+
+    transform: translateX(-50%);
+}
+
+.branch {
+    position: absolute;
+
+    height: 5px;
+
+    background: #101512;
+
+    transform-origin: left center;
+
+    border-radius: 100%;
+}
+
+.branch.one {
+    width: 160px;
+    top: 160px;
+    left: 50%;
+    transform: rotate(-30deg);
+}
+
+.branch.two {
+    width: 150px;
+    top: 220px;
+    left: 50%;
+    transform: rotate(28deg);
+}
+
+.branch.three {
+    width: 130px;
+    top: 285px;
+    left: 48%;
+    transform: rotate(-42deg);
+}
+
+.branch.four {
+    width: 115px;
+    top: 340px;
+    left: 50%;
+    transform: rotate(40deg);
+}
+
+
+/* =====================================================
+   RAIN
+===================================================== */
+
+.rain {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 5;
+
+    opacity: 0.22;
+}
+
+.rain span {
+    position: absolute;
+
+    width: 1px;
+    height: 55px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(190, 198, 193, 0.45)
+        );
+
+    animation: rainfall linear infinite;
+}
+
+@keyframes rainfall {
+
+    from {
+        transform: translateY(-100px);
+    }
+
+    to {
+        transform: translateY(110vh);
+    }
+
+}
+
+
+/* =====================================================
+   FALLING LEAVES
+===================================================== */
+
+.leaves {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 4;
+}
+
+.leaves span {
+    position: absolute;
+
+    top: -30px;
+
+    color: #737a68;
+
+    opacity: 0.18;
+
+    font-size: 18px;
+
+    animation: falling linear infinite;
+}
+
+@keyframes falling {
+
+    0% {
+        transform:
+            translateY(-30px)
+            translateX(0)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translateY(50vh)
+            translateX(80px)
+            rotate(180deg);
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            translateX(-60px)
+            rotate(360deg);
+    }
+
+}
+
+
+/* =====================================================
+   OPENING
+===================================================== */
+
+.opening {
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    position: relative;
+    z-index: 10;
+}
+
+.cover {
+
+    max-width: 800px;
+
+    animation: openingAppear 3s ease forwards;
+}
+
+@keyframes openingAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* tiny literary label */
+
+.label {
+
+    font-family: "IM Fell English", serif;
+
+    font-size: 14px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    color: #6c7469;
+
+    margin-bottom: 35px;
+}
+
+
+/* TITLE */
+
+.title {
+
+    font-family: "IM Fell English", serif;
+
+    font-size: clamp(65px, 13vw, 125px);
+
+    font-weight: normal;
+
+    color: #c0c1b3;
+
+    letter-spacing: 2px;
+
+    line-height: 0.9;
+}
+
+
+/* subtitle */
+
+.subtitle {
+
+    margin-top: 35px;
+
+    font-size: 19px;
+
+    font-style: italic;
+
+    color: #777d74;
+
+    letter-spacing: 2px;
+}
+
+
+/* divider */
+
+.divider {
+
+    margin: 45px auto;
+
+    width: 90px;
+
+    height: 1px;
+
+    background: #646b60;
+
+    opacity: 0.5;
+}
+
+
+/* opening sentence */
+
+.opening-line {
+
+    font-size: 17px;
+
+    color: #666d64;
+
+    font-style: italic;
+
+    letter-spacing: 1px;
+}
+
+
+/* button */
+
+.open {
+
+    margin-top: 50px;
+
+    padding: 13px 34px;
+
+    border: 1px solid #555d54;
+
+    background: transparent;
+
+    color: #aeb2a6;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    transition: 0.6s ease;
+}
+
+.open:hover {
+
+    border-color: #9da494;
+
+    background: rgba(150,160,145,0.06);
+
+    letter-spacing: 6px;
+
+}
+
+
+/* =====================================================
+   POEM
+===================================================== */
+
+.poetry {
+
+    display: none;
+
+    position: relative;
+
+    z-index: 8;
+
+    width: min(950px, 90%);
+
+    margin: auto;
+
+    padding: 120px 0 180px;
+}
+
+.poetry.show {
+
+    display: block;
+
+    animation: poemReveal 2.5s ease forwards;
+}
+
+@keyframes poemReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =====================================================
+   POETRY PAGE
+===================================================== */
+
+.poem-page {
+
+    position: relative;
+
+    padding:
+        clamp(45px, 8vw, 95px);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(25, 30, 25, 0.95),
+            rgba(8, 11, 9, 0.98)
+        );
+
+    border:
+
+        1px solid
+        rgba(160, 165, 145, 0.12);
+
+    box-shadow:
+
+        0 30px 100px rgba(0,0,0,0.75),
+
+        inset 0 0 100px
+        rgba(0,0,0,0.45);
+}
+
+
+/* inner manuscript border */
+
+.poem-page::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    border:
+
+        1px solid
+        rgba(170,175,155,0.05);
+
+    pointer-events: none;
+}
+
+
+/* poem heading */
+
+.poem-title {
+
+    font-family: "IM Fell English", serif;
+
+    font-size: 38px;
+
+    font-weight: normal;
+
+    color: #b7b9ac;
+
+    margin-bottom: 12px;
+}
+
+.poem-subtitle {
+
+    font-size: 15px;
+
+    color: #5e665d;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 70px;
+}
+
+
+/* =====================================================
+   STANZAS
+===================================================== */
+
+.stanza {
+
+    font-size:
+        clamp(21px, 3vw, 27px);
+
+    line-height: 1.65;
+
+    margin-bottom: 65px;
+
+    color: #c4c4b9;
+
+    font-weight: 300;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    animation:
+        stanzaAppear 1.7s ease forwards;
+}
+
+.stanza:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+.stanza:nth-child(2) {
+    animation-delay: 0.9s;
+}
+
+.stanza:nth-child(3) {
+    animation-delay: 1.4s;
+}
+
+.stanza:nth-child(4) {
+    animation-delay: 1.9s;
+}
+
+.stanza:nth-child(5) {
+    animation-delay: 2.4s;
+}
+
+@keyframes stanzaAppear {
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* highlighted questions */
+
+.question {
+
+    font-style: italic;
+
+    color: #a6aa9d;
+}
+
+
+/* final words */
+
+.final-words {
+
+    color: #b8bbaa;
+
+    font-style: italic;
+}
+
+
+/* =====================================================
+   SMALL SYMBOL
+===================================================== */
+
+.symbol {
+
+    text-align: center;
+
+    color: #697064;
+
+    font-size: 30px;
+
+    margin-top: 30px;
+
+    opacity: 0.5;
+}
+
+
+/* =====================================================
+   FINAL SCREEN
+===================================================== */
+
+.final-page {
+
+    min-height: 80vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+}
+
+.final-text {
+
+    font-family:
+        "IM Fell English",
+        serif;
+
+    font-size:
+        clamp(30px, 5vw, 52px);
+
+    line-height: 1.55;
+
+    color: #aeb2a3;
+
+    animation: finalGlow 5s ease-in-out infinite alternate;
+}
+
+@keyframes finalGlow {
+
+    from {
+        opacity: 0.65;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+.final-text small {
+
+    display: block;
+
+    margin-top: 45px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 16px;
+
+    letter-spacing: 4px;
+
+    color: #5d655c;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .moon {
+
+        width: 110px;
+        height: 110px;
+
+        right: 5%;
+        top: 7%;
+    }
+
+    .title {
+
+        font-size: 67px;
+    }
+
+    .subtitle {
+
+        font-size: 16px;
+    }
+
+    .poetry {
+
+        width: 92%;
+
+        padding-top: 70px;
+    }
+
+    .poem-page {
+
+        padding:
+            45px 28px;
+    }
+
+    .poem-title {
+
+        font-size: 32px;
+    }
+
+    .poem-subtitle {
+
+        margin-bottom: 50px;
+
+        font-size: 12px;
+    }
+
+    .stanza {
+
+        font-size: 20px;
+
+        line-height: 1.55;
+
+        margin-bottom: 48px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
+
+<div class="background">
+
+    <div class="moon"></div>
+
+    <div class="tree left">
+
+        <div class="trunk"></div>
+
+        <div class="branch one"></div>
+        <div class="branch two"></div>
+        <div class="branch three"></div>
+        <div class="branch four"></div>
+
+    </div>
+
+
+    <div class="tree right">
+
+        <div class="trunk"></div>
+
+        <div class="branch one"></div>
+        <div class="branch two"></div>
+        <div class="branch three"></div>
+        <div class="branch four"></div>
+
+    </div>
+
+    <div class="horizon"></div>
+
+</div>
+
+
+<!-- =====================================================
+     RAIN
+===================================================== -->
+
+<div class="rain" id="rain"></div>
+
+
+<!-- =====================================================
+     LEAVES
+===================================================== -->
+
+<div class="leaves" id="leaves"></div>
+
+
+
+<!-- =====================================================
+     COVER
+===================================================== -->
+
+<section class="opening" id="opening">
+
+    <div class="cover">
+
+        <div class="label">
+            a poem
+        </div>
+
+
+        <h1 class="title">
+            Still,<br>
+            Home
+        </h1>
+
+
+        <div class="divider"></div>
+
+
+        <div class="subtitle">
+            a question disguised as a garden
+        </div>
+
+
+        <div class="opening-line">
+            some things are easier to write than to say.
+        </div>
+
+
+        <button class="open" onclick="openPoem()">
+            enter
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     POEM
+===================================================== -->
+
+<main class="poetry" id="poetry">
+
+    <article class="poem-page">
+
+
+        <h2 class="poem-title">
+            Still, Home
+        </h2>
+
+
+        <div class="poem-subtitle">
+            written somewhere between spring and winter
+        </div>
+
+
+
+        <!-- STANZA 1 -->
+
+        <div class="stanza">
+
+            They say they like the spring..<br>
+
+            <span class="question">
+                but will they remain when the flowers no longer bloom?
+            </span>
+
+            <br><br>
+
+            When autumn strips the trees bare,
+            will they still choose the shade they once admired?
+
+        </div>
+
+
+
+        <!-- STANZA 2 -->
+
+        <div class="stanza">
+
+            When the sky turns grey,<br>
+
+            will they stay through the rain,<br>
+
+            or was it only the sunshine<br>
+            that drew them near?
+
+            <br><br>
+
+            When the path grows familiar,<br>
+
+            will they still walk it when<br>
+
+            the garden no longer feels new?
+
+        </div>
+
+
+
+        <!-- STANZA 3 -->
+
+        <div class="stanza">
+
+            And when the storm arrives,
+            when the branches grow restless,
+
+            <br>
+
+            will they still call it home,
+            or wander away to find a brighter view?
+
+            <br><br>
+
+            If tomorrow brings another garden,
+
+            <br>
+
+            will this one still have a place in their heart?
+
+        </div>
+
+
+
+        <!-- STANZA 4 -->
+
+        <div class="stanza">
+
+            And somewhere within,
+
+            <br>
+
+            if they call this love
+
+            <br><br>
+
+            will they still call it so
+            when the flowers fade,
+
+            <br>
+
+            the skies turn cold,
+
+            <br>
+
+            and the days lose their glow?
+
+        </div>
+
+
+
+        <!-- STANZA 5 -->
+
+        <div class="stanza">
+
+            Will they still return to the same garden,
+
+            <br>
+
+            not for its bloom,
+
+            but simply because
+
+            <br><br>
+
+            it was once...
+
+            <br><br>
+
+            <span class="final-words">
+                and still... is their home?
+            </span>
+
+        </div>
+
+
+        <div class="symbol">
+            ❧
+        </div>
+
+
+    </article>
+
+
+
+    <!-- =================================================
+         FINAL
+    ================================================= -->
+
+    <section class="final-page">
+
+        <div class="final-text">
+
+            Not for the bloom.<br>
+
+            Not for the sunshine.<br>
+
+            Not because it was new.
+
+            <br><br>
+
+            But because—
+
+            <br>
+
+            <em>it was home.</em>
+
+
+            <small>
+                and perhaps, still is.
+            </small>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<script>
+
+/* =====================================================
+   RAIN GENERATOR
+===================================================== */
+
+const rain = document.getElementById("rain");
+
+for (let i = 0; i < 75; i++) {
+
+    const drop =
+        document.createElement("span");
+
+    drop.style.left =
+        Math.random() * 100 + "%";
+
+    drop.style.animationDuration =
+        (0.8 + Math.random() * 1.8) + "s";
+
+    drop.style.animationDelay =
+        Math.random() * 5 + "s";
+
+    drop.style.opacity =
+        Math.random() * 0.7;
+
+    rain.appendChild(drop);
+}
+
+
+/* =====================================================
+   FALLING LEAVES
+===================================================== */
+
+const leaves =
+    document.getElementById("leaves");
+
+const symbols = [
+    "❧",
+    "❦",
+    "✦",
+    "·"
+];
+
+for (let i = 0; i < 25; i++) {
+
+    const leaf =
+        document.createElement("span");
+
+    leaf.innerHTML =
+        symbols[
+            Math.floor(
+                Math.random() * symbols.length
+            )
+        ];
+
+    leaf.style.left =
+        Math.random() * 100 + "%";
+
+    leaf.style.animationDuration =
+        (9 + Math.random() * 15) + "s";
+
+    leaf.style.animationDelay =
+        Math.random() * 12 + "s";
+
+    leaf.style.fontSize =
+        (10 + Math.random() * 15) + "px";
+
+    leaves.appendChild(leaf);
+}
+
+
+/* =====================================================
+   OPEN POEM
+===================================================== */
+
+function openPoem() {
+
+    const opening =
+        document.getElementById("opening");
+
+    const poetry =
+        document.getElementById("poetry");
+
+    opening.style.transition =
+        "opacity 1.5s ease";
+
+    opening.style.opacity = "0";
+
+    setTimeout(() => {
+
+        opening.style.display = "none";
+
+        poetry.classList.add("show");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }, 1500);
+
+}
+
+</script>
+
+</body>
+</html>
